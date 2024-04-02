@@ -67,7 +67,7 @@ jobs:
 
       # Step to execute Selenium tests
       - name: Run Selenium tests
-        run: python selenium_test.py
+        run: python test.py
 
       # Step to save screenshots if tests succeed
       - name: Save screenshot to repository

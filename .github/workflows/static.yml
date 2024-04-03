@@ -35,6 +35,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  
+         
   test:
     needs: sonarcloud
     runs-on: ubuntu-latest  # Runs on Ubuntu environment
@@ -67,11 +69,17 @@ jobs:
 
       # Step to execute Selenium tests
       - name: Run Selenium tests
-        run: python test.py
+        run: python selenium_test.py
 
       # Step to save screenshots if tests succeed
       - name: Save screenshot to repository
-        if: ${{ success() }}  # Condition to run only if tests suc
+        if: ${{ success() }}  # Condition to run only if tests succeed
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git add screenshot_*.png
+          git commit -m "Add screenshot taken during Selenium test"
+          git push
   deploy:
     needs: test
     environment:

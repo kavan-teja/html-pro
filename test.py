@@ -15,5 +15,10 @@ time.sleep(2)  # Adding a delay to see the result
 # Assert some condition to verify the result
 assert "Oxer" in driver.title
 
+# Take a screenshot
+timestamp = time.strftime("%Y%m%d-%H%M%S")
+screenshot_file = f"screenshot_{timestamp}.png"
+driver.save_screenshot(screenshot_file)
+
 # Close the WebDriver
 driver.close()

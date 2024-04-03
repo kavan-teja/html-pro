@@ -13,7 +13,7 @@ driver.get("https://kavan-teja.github.io/html-pro")  # Update this with the path
 time.sleep(2)  # Adding a delay to see the result
 
 # Assert some condition to verify the result
-assert "Boxing Center" in driver.title
+assert "Oxer" in driver.title
 
 # Take a screenshot
 
